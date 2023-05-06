@@ -76,7 +76,7 @@
                 var arrowZ = new THREE.ArrowHelper( z, origin, arrowSize, colorB );
                     
         
-
+                     //Posición camara
                      camera.position.x = 30;
                      camera.position.y = 30;
                      camera.position.z = 40.5;
@@ -97,18 +97,18 @@
    function createPolyhedron(n) {
   const geometry = new THREE.Geometry();
   const radius = 1;
-  const phi = (1 + Math.sqrt(5)) / 2; // golden ratio
+  const phi = (1 + Math.sqrt(5)) / 2; 
 
-  // create vertices
+  // crear vertices
   for (let i = 0; i < n; i++) {
     const theta = (2 * Math.PI * i) / n;
     const x = radius * Math.cos(theta);
     const y = radius * Math.sin(theta);
-    const z = i % 2 === 0 ? phi : -phi; // alternate z coordinates
+    const z = i % 2 === 0 ? phi : -phi; // alternar coordenadas
     geometry.vertices.push(new THREE.Vector3(x, y, z));
   }
 
-  // create faces
+  // crear caras
   for (let i = 0; i < n; i++) {
     const i1 = i;
     const i2 = (i + 1) % n;
@@ -119,10 +119,10 @@
     geometry.faces.push(face2);
   }
 
-  // compute normals and return mesh
+  // compute normals y return mesh
   geometry.computeFaceNormals();
-  const kolor = new THREE.Color("rgb(0,0,0)");
-  const material =   new THREE.MeshBasicMaterial({kolor, wireframe : true});
+  const Color = new THREE.Color("rgb(0,0,0)");
+  const material =   new THREE.MeshBasicMaterial({Color, wireframe : true});
 
   const mesh = new THREE.Mesh(geometry,material);
 
@@ -130,10 +130,10 @@
 }   
 
 
-// create a polyhedron mesh with n faces
+// crear el poliedro
 const polyhedron = createPolyhedron(n);
 
-// add the mesh to the scene
+// agregar a la escena
 scene.add(polyhedron);
 
 
